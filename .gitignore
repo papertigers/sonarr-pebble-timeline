@@ -45,3 +45,4 @@ config
 
 # Ignore database dirs
 users
+pins
