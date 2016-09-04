@@ -63,6 +63,17 @@ function userProcess(cb) {
     }
     querySonarrCalendar(function(err, episodes) {
       //do something with episodes
+      var pins = [];
+      episodes.forEach(function(episode) {
+        var pin = buildPin(episode);
+        pins.push(pin);
+      });
+      pins.forEach(function(pin) {
+        res.rows.forEach(function(user) {
+          console.log(user.id);
+          console.log(pin);
+        });
+      });
     });
   });
 }
