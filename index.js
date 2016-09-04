@@ -93,6 +93,7 @@ function buildPin(episode) {
 }
 
 function sendPin(user, pin) {
+  if (pin.date < Date.now()) return;
   timeline.sendUserPin(user, pin, function(err) {
     if (err) return log.error('failed to send timeline pin', err);
     log.info('pin sent', pin);
