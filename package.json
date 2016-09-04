@@ -4,9 +4,17 @@
   "description": "Push pebble timeline pins for upcoming shows tracked by sonarr",
   "main": "index.js",
   "dependencies": {
+    "assert-plus": "^1.0.0",
     "bunyan": "^1.8.1",
     "pebble-api": "^0.2.2",
-    "restify": "^4.1.1"
+    "restify": "^4.1.1",
+    "restify-clients": "^1.3.0",
+    "vasync": "^1.6.4",
+    "verror": "^1.8.1"
+  },
+  "repository": {
+    "url": "https://github.com/papertigers/sonarr-pebble-timeline.git",
+    "type": "git"
   },
   "devDependencies": {},
   "scripts": {
