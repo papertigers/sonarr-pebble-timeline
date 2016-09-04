@@ -42,3 +42,6 @@ jspm_packages
 
 # Don't push our config
 config
+
+# Ignore database dirs
+users
