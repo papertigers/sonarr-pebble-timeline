@@ -9,3 +9,6 @@ config.sonarr.apikey = 'c29uYXJyamFzZGxrZmphbHNrZGZqbDtrYXNkamZs';
 //server opts
 config.server.host = '0.0.0.0';
 config.server.port = 8081;
+config.server.name = 'sonarr-pebble-timeline';
+config.server.version = '0.0.1';
+config.server.psecret = 'pebble';
