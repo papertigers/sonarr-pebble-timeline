@@ -72,6 +72,7 @@ function userProcess(cb) {
         res.rows.forEach(function(user) {
           console.log(user.id);
           console.log(pin);
+          sendPin(user.id, pin);
         });
       });
     });
@@ -83,7 +84,7 @@ function periodicSonarrQuery() {
     userProcess(function() {
       end(null, null);
     });
-  }, 300000);
+  }, 1000 * 60 * 60 * 12);
   polling.run();
 }
 
@@ -125,7 +126,7 @@ function changeFeedInit() {
       });    
       pins.forEach(function(pin) {
         log.info(pin);
-        //sendPin(change.id, pin);
+        sendPin(user.id, pin);
       });
     }); 
   });
