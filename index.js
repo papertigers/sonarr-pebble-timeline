@@ -63,6 +63,8 @@ function userProcess(cb) {
     }
     querySonarrCalendar(function(err, episodes) {
       //do something with episodes
+      if (err) log.error('sonarr query failed', err);
+      log.info('Episodes found in sonar', episodes);
       var pins = [];
       episodes.forEach(function(episode) {
         var pin = buildPin(episode);
@@ -70,8 +72,6 @@ function userProcess(cb) {
       });
       pins.forEach(function(pin) {
         res.rows.forEach(function(user) {
-          console.log(user.id);
-          console.log(pin);
           sendPin(user.id, pin);
         });
       });
