@@ -63,8 +63,9 @@ function userProcess(cb) {
     }
     querySonarrCalendar(function(err, episodes) {
       //do something with episodes
-      if (err) log.error('sonarr query failed', err);
-      log.info('Episodes found in sonar', episodes);
+      if (err) return log.error('sonarr query failed', err);
+      log.info('fetched episodes from sonarr');
+      log.trace('Episodes found in sonar', episodes);
       var pins = [];
       episodes.forEach(function(episode) {
         var pin = buildPin(episode);
@@ -75,6 +76,7 @@ function userProcess(cb) {
           sendPin(user.id, pin);
         });
       });
+      cb(null, episodes);
     });
   });
 }
@@ -108,7 +110,7 @@ function sendPin(user, pin) {
   if (pin.date < Date.now()) return;
   timeline.sendUserPin(user, pin, function(err) {
     if (err) return log.error('failed to send timeline pin', err);
-    log.info('pin sent', pin);
+    log.info('pin sent', user, pin);
   });
 }
 
